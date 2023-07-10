@@ -58,7 +58,7 @@ app.use(express.json({
 })) //parse incoming request body in JSON format.
 
 // Tell express to map the default route ('/') to the index route
-app.use('/api', urls);
+app.use('/api/urls', urls);
 app.use('/', index);
 
 // Tell express to map all other non-defined routes back to the index page

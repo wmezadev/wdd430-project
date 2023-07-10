@@ -17,11 +17,11 @@ router.get('/:id', async (req, res) => {
             await Url.updateOne({ id: req.params.id }, { $inc: { clicks: 1 } });
             return res.redirect(url.originalUrl);
         } else {
-            return res.status(404).json('No URL Found');
+            return res.status(404).json({ message: 'No URL Found', data: null });
         }
     } catch (err) {
         console.error(err);
-        return res.status(500).json('Server Error');
+        return res.status(500).json({ message: 'Server Error', data: null });
     }
 });
 
