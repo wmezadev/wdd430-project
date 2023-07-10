@@ -1,15 +1,29 @@
 // Get dependencies
-var express = require('express');
-var path = require('path');
-var http = require('http');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const http = require('http');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const dotenv = require('dotenv');
+const validUrl = require('valid-url');
+dotenv.config({ path: './config/.env' });
+const connectDB = require('./config/db.js');
+const { BASE_URL, PORT } = require('./config/index.js');
 
 // Default index path
-var index = require('./server/routes/app');
+const index = require('./server/routes/app');
+const urls = require('./server/routes/urls');
 
-var app = express(); // create an instance of express
+const app = express(); // create an instance of express
+
+connectDB();
+
+// Check if base URL is valid
+if (!validUrl.isUri(BASE_URL)) {
+  console.error('Invalid base URL');
+  process.exit(1);
+}
 
 // Tell express to use the following parsers for POST data
 app.use(bodyParser.json());
@@ -38,17 +52,20 @@ app.use((req, res, next) => {
 // root directory for your web site
 app.use(express.static(path.join(__dirname, 'dist/wdd430-project')));
 
+app.use(express.json({
+  extended: false
+})) //parse incoming request body in JSON format.
+
 // Tell express to map the default route ('/') to the index route
+app.use('/api', urls);
 app.use('/', index);
 
-// Define the port address and tell express to use this port
-const port = process.env.PORT || '3000';
-app.set('port', port);
+app.set('port', PORT);
 
 // Create HTTP server.
 const server = http.createServer(app);
 
 // Tell the server to start listening on the provided port
-server.listen(port, function() {
-  console.log('API running on http://localhost:' + port)
+server.listen(PORT, function() {
+  console.log(`API running on ${BASE_URL}`)
 });
