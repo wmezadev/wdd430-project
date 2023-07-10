@@ -5,7 +5,7 @@ const Url = require('../models/Url');
 
 /* GET home page */
 router.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '../../dist/wdd430-project/index.html'));
+  res.sendFile(path.join(__dirname, '../../dist/app/index.html'));
 });
 
 /* GET redirects short url to original url */

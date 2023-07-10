@@ -1,5 +1,5 @@
 {
-  "name": "wdd430-project",
+  "name": "wdd430-project-url-shortener",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

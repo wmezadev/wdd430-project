@@ -17,7 +17,7 @@ const urls = require('./server/routes/urls');
 
 const app = express(); // create an instance of express
 
-connectDB();
+connectDB(); // connect to a mongodb instance
 
 // Check if base URL is valid
 if (!validUrl.isUri(BASE_URL)) {
@@ -30,6 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
 app.use(cookieParser());
 
 app.use(logger('dev')); // Tell express to use the Morgan logger
@@ -50,7 +51,7 @@ app.use((req, res, next) => {
 
 // Tell express to use the specified director as the
 // root directory for your web site
-app.use(express.static(path.join(__dirname, 'dist/wdd430-project')));
+app.use(express.static(path.join(__dirname, 'dist/app')));
 
 app.use(express.json({
   extended: false
@@ -59,6 +60,11 @@ app.use(express.json({
 // Tell express to map the default route ('/') to the index route
 app.use('/api', urls);
 app.use('/', index);
+
+// Tell express to map all other non-defined routes back to the index page
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/app/index.html'));
+})
 
 app.set('port', PORT);
 
