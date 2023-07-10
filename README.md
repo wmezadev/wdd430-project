@@ -24,7 +24,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Backend
 
-This project was build using [Expressjs](https://expressjs.com/) version 4.18.1. 
+This project was build using [Expressjs](https://expressjs.com/) version 4.18.1.
 
 ## Development server
 
