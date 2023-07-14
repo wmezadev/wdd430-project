@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --color-mint: #4ECCA3;
+    --color-space-cadet: #2D3047;
+    --color-gunmetal: #232931;
+    --color-snow: #FFFCFF;
+    --color-celestial-blue: #3E92CC;
+    --color-old-gold: #D5B942;
+    --color-engineering-orange: #BA2D0B;
+
+    --color-primary: var(--color-mint);
+    --color-secondary: var(--color-space-cadet);
+    --color-white: var(--color-snow);
+    --color-black: var(--color-gunmetal);
+    --color-info: var(--color-celestial-blue);
+    --color-warning: var(--color-old-gold);
+    --color-danger: var(--color-engineering-orange);
+}
