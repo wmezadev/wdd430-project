@@ -9,6 +9,7 @@ import { Url } from './Url.model';
 export class UrlShortenerService {
   urls: Url[] = [];
   private apiUrl = 'http://localhost:3000/api/urls';
+  lastUrlChangedEvent = new Subject<Url>();
   urlListChangedEvent = new Subject<Url[]>();
 
   constructor(private http: HttpClient) {
@@ -25,6 +26,7 @@ export class UrlShortenerService {
       .subscribe({
         next: (response) => {
           this.urls.push(response.data);
+          this.lastUrlChangedEvent.next(response.data);
           this.urlListChangedEvent.next(this.urls.slice());
         },
         error: (error: any) => {
