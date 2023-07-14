@@ -81,7 +81,7 @@ router.put("/:id", async (req, res) => {
     );
     if (url) {
       return res
-        .status(204)
+        .status(201)
         .json({ message: "URL updated successfully", data: url });
     } else {
       return res.status(404).json({ message: "No URL Found", data: null });
@@ -93,10 +93,14 @@ router.put("/:id", async (req, res) => {
 });
 
 /* DELETE remove a URL from the database */
-router.put("/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
-    await Url.findOneAndDelete({ id: req.params.id });
-    return res.status(204).json({ message: "URL deleted successfully" });
+    const url = await Url.findOneAndDelete({ id: req.params.id });
+    if (url) {
+      return res.status(204).json({ message: "URL deleted successfully" });
+    } else {
+      return res.status(404).json({ message: "No URL Found", data: null });
+    }
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Server Error", data: null });
