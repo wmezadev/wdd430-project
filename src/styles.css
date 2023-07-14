@@ -16,3 +16,8 @@
     --color-warning: var(--color-old-gold);
     --color-danger: var(--color-engineering-orange);
 }
+
+.bg-mint {
+    --bs-bg-opacity: 1;
+    background-color: var(--color-primary);
+}

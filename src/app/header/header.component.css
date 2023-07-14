@@ -1,0 +1,5 @@
+.logo-container svg, 
+.logo-container img {
+    height: 30px;
+    width: 100%;
+}
