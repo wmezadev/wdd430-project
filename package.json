@@ -10,11 +10,13 @@
     "test": "ng test",
     "format:fix": "prettier --config ./.prettierrc --write \"**/**/**/*{.ts,.js,.json,.css,.scss,.html}\"",
     "format:verify": "prettier --config ./.prettierrc --list-different \"**/**/**/*{.ts,.js,.json,.css,.scss,.html}\"",
-    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+    "pre-commit-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "pre-push-husky": "npx husky install && npx husky add .husky/pre-push \"ng build\""
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "build"
     }
   },
   "lint-staged": {
