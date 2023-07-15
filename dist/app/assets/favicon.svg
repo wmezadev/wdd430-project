@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
+   <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="SvgjsSvg1005" xml:space="preserve" viewBox="0 0 100 110">
+      <metadata id="SvgjsMetadata1004">
+         <rdf:rdf>
+            <cc:work rdf:about="">
+               <dc:format>image/svg+xml</dc:format>
+               <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"></dc:type>
+               <dc:title></dc:title>
+            </cc:work>
+         </rdf:rdf>
+      </metadata>
+      <defs id="SvgjsDefs1003"></defs>
+      <g id="SvgjsG5538" featurekey="inlineSymbolFeature-0" fill="#232931">
+         <path xmlns="http://www.w3.org/2000/svg" d="M5,82.135V46.112h90v36.023H5 M49.104,49.695h-6.48v16.583h-1.792V49.695h-6.48v8.272h-1.83v-8.272h-6.48v16.583H24.25  V49.695h-6.48v8.272h-1.792v-8.272h-6.48v28.819h81.004V49.695h-6.48v8.272h-1.792v-8.272H75.75v16.583h-1.792V49.695h-6.48v8.272  h-1.791v-8.272h-6.519v16.583h-1.792V49.695h-6.48v8.272h-1.792V49.695"></path>
+         <polyline xmlns="http://www.w3.org/2000/svg" points="5,17.865 7.249,17.865 7.249,35.858 5,35.858 5,17.865 "></polyline>
+         <polyline xmlns="http://www.w3.org/2000/svg" points="95,17.865 92.751,17.865 92.751,35.858 95,35.858 95,17.865 "></polyline>
+         <polyline xmlns="http://www.w3.org/2000/svg" points="82.649,28.005 82.649,35.858 91.646,26.862 82.649,17.865 82.649,25.756 17.351,25.756 17.351,17.865   8.354,26.862 17.351,35.858 17.351,28.005 82.649,28.005 "></polyline>
+      </g>
+   </svg>
+</svg>
