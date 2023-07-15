@@ -22,9 +22,27 @@ This is a URL Shortener app that saves URLs in a database collection and generat
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
 
+### Frontend Enviroment variables
+
+Before starting, create a file `.env` at the root an add your own API url like this (You can use .env.example):
+
+```bash
+NG_APP_API_URL=http://localhost:3000
+```
+
 ## Backend
 
 This project was build using [Expressjs](https://expressjs.com/) version 4.18.1.
+
+### Backend Enviroment variables
+
+Before starting, create a file `config/.env` at the config folder an add your own settings for your database like this (You can use `config/.env.example`):
+
+```bash
+PORT=3000
+BASE_URL=http://localhost
+MONGO_URI=mongodb://localhost/url-shortener
+```
 
 ## Development server
 
