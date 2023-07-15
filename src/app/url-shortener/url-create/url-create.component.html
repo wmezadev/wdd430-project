@@ -7,12 +7,24 @@
       </div>
     </div>
   </div>
-  <form (ngSubmit)="submitForm()">
-    <div class="form-group">
-      <label for="fullUrl">Full URL</label>
-      <input type="text" class="form-control" id="fullUrl" [(ngModel)]="fullUrl" name="fullUrl" required />
+  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <div class="input-group input-group-lg mb-3">
+      <input
+        type="link"
+        class="form-control"
+        placeholder="Enter link here"
+        aria-label="Enter link here"
+        aria-describedby="button-shorten-url"
+        id="longUrl"
+        formControlName="longUrl"
+        name="longUrl"
+        required
+        [ngClass]="{ 'is-invalid': isFieldInvalid('longUrl') }"
+      />
+      <button type="submit" class="btn btn-outline-secondary btn-outline-accent" id="button-shorten-url">
+        Shorten URL
+      </button>
     </div>
-    <button type="submit" class="btn btn-primary">Shorten URL</button>
   </form>
   <br />
   <div *ngIf="shortenedUrl" class="alert alert-success">
