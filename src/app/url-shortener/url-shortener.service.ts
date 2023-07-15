@@ -9,7 +9,7 @@ import { Url } from './Url.model';
 export class UrlShortenerService {
   urls: Url[] = [];
   selectedUrl: Url | null = null;
-  private apiUrl = 'http://localhost:3000/api/urls';
+  private apiUrl = `${import.meta.env['NG_APP_API_URL']}/api/urls`;
   lastUrlChangedEvent = new Subject<Url>();
   selectedUrlChangedEvent = new Subject<Url | null>();
   urlListChangedEvent = new Subject<Url[]>();
