@@ -10,19 +10,9 @@ import { HeaderComponent } from './header/header.component';
 import { UrlListComponent } from './url-shortener/url-list/url-list.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UrlCreateComponent,
-    HeaderComponent,
-    UrlListComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  declarations: [AppComponent, UrlCreateComponent, HeaderComponent, UrlListComponent],
+  imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

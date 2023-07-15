@@ -4,18 +4,18 @@ import { UrlListComponent } from './url-shortener/url-list/url-list.component';
 import { UrlCreateComponent } from './url-shortener/url-create/url-create.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
-    component: UrlCreateComponent
+  {
+    path: '',
+    component: UrlCreateComponent,
   },
-  { 
-    path: 'dashboard', 
-    component: UrlListComponent
-  }
+  {
+    path: 'dashboard',
+    component: UrlListComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

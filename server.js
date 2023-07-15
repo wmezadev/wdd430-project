@@ -27,9 +27,11 @@ if (!validUrl.isUri(BASE_URL)) {
 
 // Tell express to use the following parsers for POST data
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  }),
+);
 
 app.use(cookieParser());
 
@@ -38,14 +40,8 @@ app.use(logger('dev')); // Tell express to use the Morgan logger
 // Add support for CORS
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PATCH, PUT, DELETE, OPTIONS'
-  );
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
   next();
 });
 
@@ -53,9 +49,11 @@ app.use((req, res, next) => {
 // root directory for your web site
 app.use(express.static(path.join(__dirname, 'dist/app')));
 
-app.use(express.json({
-  extended: false
-})) //parse incoming request body in JSON format.
+app.use(
+  express.json({
+    extended: false,
+  }),
+); //parse incoming request body in JSON format.
 
 // Tell express to map the default route ('/') to the index route
 app.use('/api/urls', urls);
@@ -64,7 +62,7 @@ app.use('/', index);
 // Tell express to map all other non-defined routes back to the index page
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/app/index.html'));
-})
+});
 
 app.set('port', PORT);
 
@@ -72,6 +70,6 @@ app.set('port', PORT);
 const server = http.createServer(app);
 
 // Tell the server to start listening on the provided port
-server.listen(PORT, function() {
-  console.log(`API running on ${BASE_URL}`)
+server.listen(PORT, function () {
+  console.log(`API running on ${BASE_URL}`);
 });

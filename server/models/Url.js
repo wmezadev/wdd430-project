@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const urlSchema = new mongoose.Schema(
   {
@@ -9,9 +9,9 @@ const urlSchema = new mongoose.Schema(
       type: Number,
       required: true,
       default: 0,
-    }
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-module.exports = mongoose.model("Url", urlSchema);
+module.exports = mongoose.model('Url', urlSchema);

@@ -5,21 +5,19 @@ import { Url } from '../Url.model';
 @Component({
   selector: 'app-url-create',
   templateUrl: './url-create.component.html',
-  styleUrls: ['./url-create.component.css']
+  styleUrls: ['./url-create.component.css'],
 })
 export class UrlCreateComponent {
   fullUrl!: string;
   shortenedUrl!: string;
   subscription: Subscription = new Subscription();
 
-  constructor(private urlService: UrlShortenerService) { }
+  constructor(private urlService: UrlShortenerService) {}
 
   ngOnInit() {
-    this.subscription = this.urlService.lastUrlChangedEvent.subscribe(
-      (url: Url) => {
-        this.shortenedUrl = url.shortUrl;
-      }
-    );
+    this.subscription = this.urlService.lastUrlChangedEvent.subscribe((url: Url) => {
+      this.shortenedUrl = url.shortUrl;
+    });
   }
 
   ngOnDestroy() {
