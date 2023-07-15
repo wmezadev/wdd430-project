@@ -39,14 +39,14 @@ router.post('/', async (req, res) => {
     return res.status(401).json({ message: 'Invalid originalUrl', data: originalUrl });
   }
 
-  const URI = shortid.generate();
+  const id = shortid.generate();
 
   try {
     let url = await Url.findOne({ originalUrl });
     if (url) {
       return res.json({ message: 'URL is already shortened', data: url });
     } else {
-      const shortUrl = `${SHORTEN_URL_HOST}/${URI}`;
+      const shortUrl = `${SHORTEN_URL_HOST}/${id}`;
       url = new Url({
         originalUrl,
         shortUrl,
