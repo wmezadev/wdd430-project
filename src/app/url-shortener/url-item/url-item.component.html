@@ -1,45 +1,58 @@
-<div class="row">
-  <div class="col-12">
-    <ng-container *ngIf="url">
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary">Reset Clicks</button>
-        <button type="button" class="btn btn-primary">Delete URL</button>
-      </div>
-    </ng-container>
-  </div>
-</div>
-<br />
-<div class="row">
-  <div class="col-12">
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Original URL</th>
-            <th scope="col">Short URL</th>
-            <th scope="col">Clicks</th>
-            <th scope="col">Created At</th>
-            <th scope="col">Statics Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <ng-container *ngIf="url">
-            <tr>
-              <td>
-                <a href="{{ url.originalUrl }}" target="_blank">{{ url.originalUrl }}</a>
-              </td>
-              <td>
-                <a href="{{ url.shortUrl }}" target="_blank">{{ url.shortUrl }}</a>
-              </td>
-              <td>{{ url.clicksCounter }}</td>
-              <td>{{ url.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
-              <td>
-                <a [routerLink]="['/dashboard/urls/'] + url.id">{{ url.id }}</a>
-              </td>
-            </tr>
-          </ng-container>
-        </tbody>
-      </table>
+<ng-container *ngIf="url">
+  <div class="row gap-1 text-center">
+    <div class="col">
+      <h3>Original URL</h3>
+      <a href="{{ url.originalUrl }}" target="_blank">{{ url.originalUrl }}</a>
+    </div>
+    <div class="col">
+      <h3>Short URL</h3>
+      <a href="{{ url.shortUrl }}" target="_blank">{{ url.shortUrl }}</a>
+    </div>
+    <div class="col">
+      <h3>Total Clicks</h3>
+      <p>{{ url.clicksCounter }}</p>
+    </div>
+    <div class="col">
+      <h3>Created At</h3>
+      <p>{{ url.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
     </div>
   </div>
-</div>
+  <br />
+  <div class="row">
+    <div class="col-12">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-warning" (click)="onResetClicks()">Reset Clicks</button>
+        <button type="button" class="btn btn-danger">Delete URL</button>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Platform</th>
+              <th scope="col">OS</th>
+              <th scope="col">Browser</th>
+              <th scope="col">Version</th>
+              <th scope="col">Click Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let click of url?.clicks">
+              <tr>
+                <td>{{ click.platform }}</td>
+                <td>{{ click.os }}</td>
+                <td>{{ click.browser }}</td>
+                <td>{{ click.version }}</td>
+                <td>{{ click.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>

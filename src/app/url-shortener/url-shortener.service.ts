@@ -8,8 +8,10 @@ import { Url } from './Url.model';
 })
 export class UrlShortenerService {
   urls: Url[] = [];
+  selectedUrl: Url | null = null;
   private apiUrl = 'http://localhost:3000/api/urls';
   lastUrlChangedEvent = new Subject<Url>();
+  selectedUrlChangedEvent = new Subject<Url>();
   urlListChangedEvent = new Subject<Url[]>();
 
   constructor(private http: HttpClient) {
@@ -37,17 +39,13 @@ export class UrlShortenerService {
     if (!url) {
       return;
     }
-    const index = this.urls.findIndex((d) => d.id === url.id);
-    if (index === -1) {
-      return;
-    }
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http
       .put<{ message: string; data: Url }>(`${this.apiUrl}/${url.id}`, { clicksCounter: 0 }, { headers })
       .subscribe({
         next: (response) => {
-          this.urls[index] = response.data;
-          this.sortAndUpdateUrls();
+          this.selectedUrl = response.data;
+          this.selectedUrlChangedEvent.next(this.selectedUrl);
         },
         error: (error: any) => {
           console.error('Error adding URL:', error);
@@ -61,13 +59,24 @@ export class UrlShortenerService {
         this.urls = response.data;
         this.sortAndUpdateUrls();
       },
-      error: (error: any) => {
-        console.error('An error occurred:', error);
-      },
     });
   }
 
-  async getUrl(id: string): Promise<Url | null> {
+  getUrl(id: string) {
+    if (id) {
+      this.http.get<{ message: string; data: Url }>(`${this.apiUrl}/${id}`).subscribe({
+        next: (response) => {
+          this.selectedUrl = response.data;
+          this.selectedUrlChangedEvent.next(this.selectedUrl);
+        },
+        error: (error: any) => {
+          console.error('An error occurred:', error);
+        },
+      });
+    }
+  }
+
+  /*   async getUrl(id: string): Promise<Url | null> {
     try {
       const response = await this.http.get<{ message: string; data: Url }>(`${this.apiUrl}/${id}`).toPromise();
       return response?.data || null;
@@ -75,7 +84,7 @@ export class UrlShortenerService {
       console.error('An error occurred:', error);
       return null;
     }
-  }
+  } */
 
   deleteUrl(url: Url): void {
     if (!url) {
