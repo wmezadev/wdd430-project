@@ -14,6 +14,7 @@ export class UrlListComponent implements OnInit {
   constructor(private urlService: UrlShortenerService) {}
 
   ngOnInit() {
+    this.urlService.getUrls();
     this.subscription = this.urlService.urlListChangedEvent.subscribe((urls: Url[]) => {
       this.urls = urls;
     });

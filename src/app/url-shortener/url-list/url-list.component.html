@@ -23,7 +23,7 @@
               <td>{{ url.clicks }}</td>
               <td>{{ url.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
               <td>
-                <a href="dashboard/urls/{{ url.id }}" target="_blank">{{ url.id }}</a>
+                <a [routerLink]="['/dashboard/urls/'] + url.id">{{ url.id }}</a>
               </td>
             </tr>
           </ng-container>
