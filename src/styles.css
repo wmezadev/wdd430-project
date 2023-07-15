@@ -17,10 +17,10 @@
   --color-danger: var(--color-engineering-orange);
 }
 
-*,
 html,
 body {
   font-family: 'Poppins', sans-serif;
+  height: 100%;
 }
 
 body {
