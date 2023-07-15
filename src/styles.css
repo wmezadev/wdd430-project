@@ -25,6 +25,7 @@ body {
 
 body {
   background-color: var(--color-snow-white);
+  color: var(--color-black);
 }
 
 h1,
