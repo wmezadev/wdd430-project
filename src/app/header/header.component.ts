@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   menuOpen = false;
+  faUpRightFromSquare = faUpRightFromSquare;
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
