@@ -9,12 +9,18 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format:fix": "prettier --config ./.prettierrc --write \"**/**/**/*{.ts,.js,.json,.css,.scss,.html}\"",
-    "format:verify": "prettier --config ./.prettierrc --list-different \"**/**/**/*{.ts,.js,.json,.css,.scss,.html}\""
+    "format:verify": "prettier --config ./.prettierrc --list-different \"**/**/**/*{.ts,.js,.json,.css,.scss,.html}\"",
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "**/*.{ts,js,json,css,scss,html}": [
+      "prettier --write ."
+    ]
   },
   "private": true,
   "dependencies": {
@@ -52,6 +58,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
     "typescript": "~4.9.4"
   }
