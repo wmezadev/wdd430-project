@@ -8,7 +8,7 @@
             <th scope="col">Short URL</th>
             <th scope="col">Clicks</th>
             <th scope="col">Created At</th>
-            <th scope="col">Statics Details</th>
+            <th scope="col">Details</th>
           </tr>
         </thead>
         <tbody>
@@ -22,8 +22,13 @@
               </td>
               <td>{{ url.clicksCounter }}</td>
               <td>{{ url.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
-              <td>
-                <a [routerLink]="['/dashboard/urls/'] + url.id">{{ url.id }}</a>
+              <td class="text-center">
+                <a
+                  ariaLabel="View details for {{ url.shortUrl }}"
+                  class="btn btn-primary btn-sm"
+                  [routerLink]="['/dashboard/urls/'] + url.id"
+                  ><fa-icon [icon]="faEye"></fa-icon
+                ></a>
               </td>
             </tr>
           </ng-container>
