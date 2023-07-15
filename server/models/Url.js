@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Click = require('./Click');
 
 const urlSchema = new mongoose.Schema(
   {
@@ -14,5 +15,12 @@ const urlSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+urlSchema.pre('findOneAndDelete', async function (next) {
+  const query = this.getQuery();
+  const urlId = query._id;
+  await Click.deleteMany({ url: urlId });
+  next();
+});
 
 module.exports = mongoose.model('Url', urlSchema);
