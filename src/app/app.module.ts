@@ -8,9 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { UrlListComponent } from './url-shortener/url-list/url-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent, UrlCreateComponent, HeaderComponent, UrlListComponent],
+  declarations: [AppComponent, UrlCreateComponent, HeaderComponent, UrlListComponent, DashboardComponent],
   imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
