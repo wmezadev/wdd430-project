@@ -3,8 +3,8 @@ const router = express.Router();
 const validUrl = require('valid-url');
 const shortid = require('shortid');
 const Url = require('../models/Url');
-const { SHORTEN_URL_HOST } = require('../../config/index.js');
 const Click = require('../models/Click');
+const SHORTEN_URL_HOST = process.env.SHORTEN_URL_HOST;
 
 /* GET a shortened URL by id */
 router.get('/:id', async (req, res) => {

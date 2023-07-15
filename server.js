@@ -7,10 +7,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dotenv = require('dotenv');
 const validUrl = require('valid-url');
-dotenv.config({ path: './config/.env' });
-const connectDB = require('./config/db.js');
-const { BASE_URL, PORT } = require('./config/index.js');
+const connectDB = require('./server-db.js');
 
+dotenv.config({ path: './.env' });
+const BASE_URL = process.env.BASE_URL;
+const PORT = process.env.PORT;
 // Default index path
 const index = require('./server/routes/app');
 const urls = require('./server/routes/urls');
