@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UrlCreateComponent } from './url-shortener/url-create/url-create.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UrlItemComponent } from './url-shortener/url-item/url-item.component';
 import { UrlListComponent } from './url-shortener/url-list/url-list.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: UrlCreateComponent,
+    component: HomeComponent,
   },
   {
     path: 'dashboard',

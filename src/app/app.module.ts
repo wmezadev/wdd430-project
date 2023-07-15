@@ -11,6 +11,7 @@ import { UrlListComponent } from './url-shortener/url-list/url-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UrlItemComponent } from './url-shortener/url-item/url-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     UrlListComponent,
     DashboardComponent,
     UrlItemComponent,
+    HomeComponent,
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, FontAwesomeModule],
   providers: [],
