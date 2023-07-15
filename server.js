@@ -16,6 +16,7 @@ const index = require('./server/routes/app');
 const urls = require('./server/routes/urls');
 
 const app = express(); // create an instance of express
+const useragent = require('express-useragent');
 
 connectDB(); // connect to a mongodb instance
 
@@ -32,6 +33,8 @@ app.use(
     extended: false,
   }),
 );
+
+app.use(useragent.express());
 
 app.use(cookieParser());
 
