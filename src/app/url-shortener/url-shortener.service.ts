@@ -11,7 +11,7 @@ export class UrlShortenerService {
   selectedUrl: Url | null = null;
   private apiUrl = 'http://localhost:3000/api/urls';
   lastUrlChangedEvent = new Subject<Url>();
-  selectedUrlChangedEvent = new Subject<Url>();
+  selectedUrlChangedEvent = new Subject<Url | null>();
   urlListChangedEvent = new Subject<Url[]>();
 
   constructor(private http: HttpClient) {
@@ -36,9 +36,6 @@ export class UrlShortenerService {
   }
 
   resetUrlClicks(url: Url) {
-    if (!url) {
-      return;
-    }
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http
       .put<{ message: string; data: Url }>(`${this.apiUrl}/${url.id}`, { clicksCounter: 0 }, { headers })
@@ -76,27 +73,15 @@ export class UrlShortenerService {
     }
   }
 
-  /*   async getUrl(id: string): Promise<Url | null> {
-    try {
-      const response = await this.http.get<{ message: string; data: Url }>(`${this.apiUrl}/${id}`).toPromise();
-      return response?.data || null;
-    } catch (error) {
-      console.error('An error occurred:', error);
-      return null;
-    }
-  } */
-
   deleteUrl(url: Url): void {
-    if (!url) {
-      return;
-    }
-    const index = this.urls.findIndex((d) => d.id === url.id);
-    if (index === -1) {
-      return;
-    }
-    this.http.delete<{ message: string; url: Url }>(`${this.apiUrl}/${url.id}`).subscribe((response) => {
-      this.urls.splice(index, 1);
-      this.sortAndUpdateUrls();
+    this.http.delete<{ message: string; url: Url }>(`${this.apiUrl}/${url.id}`).subscribe({
+      next: (response) => {
+        this.selectedUrl = null;
+        this.selectedUrlChangedEvent.next(this.selectedUrl);
+      },
+      error: (error: any) => {
+        console.error('An error occurred:', error);
+      },
     });
   }
 

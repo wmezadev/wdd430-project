@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UrlShortenerService } from '../url-shortener.service';
 import { Url } from '../Url.model';
 import { Subscription } from 'rxjs';
@@ -9,12 +9,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./url-item.component.css'],
 })
 export class UrlItemComponent implements OnInit {
-  url!: Url | null;
+  url!: Url;
   subscription: Subscription = new Subscription();
 
   constructor(
     private urlService: UrlShortenerService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -22,14 +23,24 @@ export class UrlItemComponent implements OnInit {
       const id = params['id'];
       this.urlService.getUrl(id);
     });
-    this.subscription = this.urlService.selectedUrlChangedEvent.subscribe((url: Url) => {
-      this.url = url;
+    this.subscription = this.urlService.selectedUrlChangedEvent.subscribe((url) => {
+      if (url === null) {
+        this.router.navigate(['/dashboard/urls']);
+      } else {
+        this.url = url;
+      }
     });
   }
 
-  async onResetClicks() {
+  onResetClicks() {
     if (this.url) {
       this.urlService.resetUrlClicks(this.url);
+    }
+  }
+
+  onDeleteUrl() {
+    if (this.url) {
+      this.urlService.deleteUrl(this.url);
     }
   }
 }

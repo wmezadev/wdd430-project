@@ -1,4 +1,9 @@
 <ng-container *ngIf="url">
+  <div class="row">
+    <div class="col-12">
+      <h2>Details:</h2>
+    </div>
+  </div>
   <div class="row gap-1 text-center">
     <div class="col">
       <h3>Original URL</h3>
@@ -22,11 +27,16 @@
     <div class="col-12">
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-warning" (click)="onResetClicks()">Reset Clicks</button>
-        <button type="button" class="btn btn-danger">Delete URL</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteUrl()">Delete URL</button>
       </div>
     </div>
   </div>
   <br />
+  <div class="row">
+    <div class="col-12">
+      <h2>Clicks:</h2>
+    </div>
+  </div>
   <div class="row">
     <div class="col-12">
       <div class="table-responsive">
