@@ -7,12 +7,14 @@ import { UrlCreateComponent } from './url-shortener/url-create/url-create.compon
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
+import { UrlListComponent } from './url-shortener/url-list/url-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UrlCreateComponent,
-    HeaderComponent
+    HeaderComponent,
+    UrlListComponent
   ],
   imports: [
     AppRoutingModule,
