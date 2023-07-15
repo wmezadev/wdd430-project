@@ -25,10 +25,10 @@ export class UrlShortenerService {
       next: (response) => {
         this.urls.push(response.data);
         this.lastUrlChangedEvent.next(response.data);
-        this.urlListChangedEvent.next(this.urls.slice());
+        this.sortAndUpdateUrls();
       },
       error: (error: any) => {
-        console.error('Error adding document:', error);
+        console.error('Error adding URL:', error);
       },
     });
   }
@@ -45,10 +45,10 @@ export class UrlShortenerService {
     this.http.put<{ message: string; data: Url }>(`${this.apiUrl}/${url.id}`, { clicks: 0 }, { headers }).subscribe({
       next: (response) => {
         this.urls[index] = response.data;
-        this.urlListChangedEvent.next(this.urls.slice());
+        this.sortAndUpdateUrls();
       },
       error: (error: any) => {
-        console.error('Error adding contact:', error);
+        console.error('Error adding URL:', error);
       },
     });
   }
@@ -57,7 +57,7 @@ export class UrlShortenerService {
     this.http.get<{ message: string; data: Url[] }>(this.apiUrl).subscribe({
       next: (response) => {
         this.urls = response.data;
-        this.urlListChangedEvent.next(this.urls.slice());
+        this.sortAndUpdateUrls();
       },
       error: (error: any) => {
         console.error('An error occurred:', error);
@@ -79,7 +79,14 @@ export class UrlShortenerService {
     }
     this.http.delete<{ message: string; url: Url }>(`${this.apiUrl}/${url.id}`).subscribe((response) => {
       this.urls.splice(index, 1);
-      this.urlListChangedEvent.next(this.urls.slice());
+      this.sortAndUpdateUrls();
     });
+  }
+
+  sortAndUpdateUrls(): void {
+    // Sort the urls array by createdAt in descending order
+    this.urls.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    // Update service event
+    this.urlListChangedEvent.next(this.urls.slice());
   }
 }
