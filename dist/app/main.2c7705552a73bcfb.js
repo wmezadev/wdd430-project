@@ -13920,7 +13920,7 @@
               (this.http = n),
                 (this.urls = []),
                 (this.selectedUrl = null),
-                (this.apiUrl = 'https://wmezadev-url-shortener-9d83.onrender.com/api/urls'),
+                (this.apiUrl = 'http://localhost:3000/api/urls'),
                 (this.lastUrlChangedEvent = new _1()),
                 (this.selectedUrlChangedEvent = new _1()),
                 (this.urlListChangedEvent = new _1()),
