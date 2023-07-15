@@ -3,21 +3,44 @@
   --color-mint: #4ecca3;
   --color-space-cadet: #2d3047;
   --color-gunmetal: #232931;
-  --color-snow: #fffcff;
+  --color-snow-white: #fffcff;
   --color-celestial-blue: #3e92cc;
   --color-old-gold: #d5b942;
   --color-engineering-orange: #ba2d0b;
 
-  --color-primary: var(--color-mint);
+  --color-accent: var(--color-mint);
+  --color-primary: var(--color-celestial-blue);
   --color-secondary: var(--color-space-cadet);
-  --color-white: var(--color-snow);
   --color-black: var(--color-gunmetal);
   --color-info: var(--color-celestial-blue);
   --color-warning: var(--color-old-gold);
   --color-danger: var(--color-engineering-orange);
 }
 
-.bg-mint {
+*,
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--color-snow-white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+.bg-accent {
   --bs-bg-opacity: 1;
-  background-color: var(--color-primary);
+  background-color: var(--color-accent);
 }
