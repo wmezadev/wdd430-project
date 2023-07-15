@@ -1,33 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="mt-5 text-center">
-        <h1>Free URL Shortener</h1>
-        <p>Create short & memorable links in seconds.</p>
-      </div>
+<div class="row">
+  <div class="col-12">
+    <div class="mt-5 text-center">
+      <h1>Free URL Shortener</h1>
+      <p>Create short & memorable links in seconds.</p>
     </div>
   </div>
-  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
-    <div class="input-group input-group-lg mb-3">
-      <input
-        type="link"
-        class="form-control"
-        placeholder="Enter link here"
-        aria-label="Enter link here"
-        aria-describedby="button-shorten-url"
-        id="longUrl"
-        formControlName="longUrl"
-        name="longUrl"
-        required
-        [ngClass]="{ 'is-invalid': isFieldInvalid('longUrl') }"
-      />
-      <button type="submit" class="btn btn-outline-secondary btn-outline-accent" id="button-shorten-url">
-        Shorten URL
-      </button>
-    </div>
-  </form>
-  <br />
-  <div *ngIf="shortenedUrl" class="alert alert-success">
-    Shortened URL: <a [href]="shortenedUrl" target="_blank">{{ shortenedUrl }}</a>
+</div>
+<form [formGroup]="myForm" (ngSubmit)="submitForm()">
+  <div class="input-group input-group-lg mb-3">
+    <input
+      type="link"
+      class="form-control"
+      placeholder="Enter link here"
+      aria-label="Enter link here"
+      aria-describedby="button-shorten-url"
+      id="longUrl"
+      formControlName="longUrl"
+      name="longUrl"
+      required
+      [ngClass]="{ 'is-invalid': isFieldInvalid('longUrl') }"
+    />
+    <button type="submit" class="btn btn-outline-secondary btn-outline-accent" id="button-shorten-url">
+      Shorten URL
+    </button>
   </div>
+</form>
+<br />
+<div *ngIf="shortenedUrl" class="alert alert-success">
+  Shortened URL: <a [href]="shortenedUrl" target="_blank">{{ shortenedUrl }}</a>
 </div>
