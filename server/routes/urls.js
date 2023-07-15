@@ -4,6 +4,7 @@ const validUrl = require('valid-url');
 const shortid = require('shortid');
 const Url = require('../models/Url');
 const { BASE_URL } = require('../../config/index.js');
+const Click = require('../models/Click');
 
 /* GET a shortened URL by id */
 router.get('/:id', async (req, res) => {
@@ -60,20 +61,17 @@ router.post('/', async (req, res) => {
   }
 });
 
-/* PUT updates a URL data (only originalUrl and clicks) */
+/* PUT Resets CLICKS only (not necessary to demonstrate update other fields) */
 router.put('/:id', async (req, res) => {
   try {
-    const url = await Url.findOneAndUpdate(
+    const updatedUrl = await Url.findOneAndUpdate(
       { id: req.params.id },
-      {
-        $set: {
-          originalUrl: req.body.originalUrl,
-          clicksCounter: req.body.clicksCounter,
-        },
-      },
+      { $set: { clicksCounter: 0, clicks: [] } },
+      { new: true },
     );
-    if (url) {
-      return res.status(201).json({ message: 'URL updated successfully', data: url });
+    if (updatedUrl) {
+      await Click.deleteMany({ url: updatedUrl._id });
+      return res.status(201).json({ message: 'URL updated successfully', data: updatedUrl });
     } else {
       return res.status(404).json({ message: 'No URL Found', data: null });
     }

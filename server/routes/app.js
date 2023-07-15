@@ -17,7 +17,7 @@ router.get('/:id', async (req, res) => {
       // Save Click user agent data
       const click = new Click({
         ...req.useragent,
-        urlId: url._id,
+        url: url._id,
       });
       await click.save();
       // Increments counter by one because URL was visited
