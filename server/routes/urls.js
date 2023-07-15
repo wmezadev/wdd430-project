@@ -3,7 +3,7 @@ const router = express.Router();
 const validUrl = require('valid-url');
 const shortid = require('shortid');
 const Url = require('../models/Url');
-const { BASE_URL } = require('../../config/index.js');
+const { SHORTEN_URL_HOST } = require('../../config/index.js');
 const Click = require('../models/Click');
 
 /* GET a shortened URL by id */
@@ -39,14 +39,14 @@ router.post('/', async (req, res) => {
     return res.status(401).json({ message: 'Invalid originalUrl', data: originalUrl });
   }
 
-  const id = shortid.generate();
+  const URI = shortid.generate();
 
   try {
     let url = await Url.findOne({ originalUrl });
     if (url) {
       return res.json({ message: 'URL is already shortened', data: url });
     } else {
-      const shortUrl = `${BASE_URL}/${id}`;
+      const shortUrl = `${SHORTEN_URL_HOST}/${URI}`;
       url = new Url({
         originalUrl,
         shortUrl,
