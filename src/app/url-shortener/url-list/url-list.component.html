@@ -20,7 +20,7 @@
               <td>
                 <a href="{{ url.shortUrl }}" target="_blank">{{ url.shortUrl }}</a>
               </td>
-              <td>{{ url.clicks }}</td>
+              <td>{{ url.clicksCounter }}</td>
               <td>{{ url.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
               <td>
                 <a [routerLink]="['/dashboard/urls/'] + url.id">{{ url.id }}</a>

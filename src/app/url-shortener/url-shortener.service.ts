@@ -42,15 +42,17 @@ export class UrlShortenerService {
       return;
     }
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.put<{ message: string; data: Url }>(`${this.apiUrl}/${url.id}`, { clicks: 0 }, { headers }).subscribe({
-      next: (response) => {
-        this.urls[index] = response.data;
-        this.sortAndUpdateUrls();
-      },
-      error: (error: any) => {
-        console.error('Error adding URL:', error);
-      },
-    });
+    this.http
+      .put<{ message: string; data: Url }>(`${this.apiUrl}/${url.id}`, { clicksCounter: 0 }, { headers })
+      .subscribe({
+        next: (response) => {
+          this.urls[index] = response.data;
+          this.sortAndUpdateUrls();
+        },
+        error: (error: any) => {
+          console.error('Error adding URL:', error);
+        },
+      });
   }
 
   getUrls() {
@@ -65,8 +67,14 @@ export class UrlShortenerService {
     });
   }
 
-  getUrl(id: string): Url | null {
-    return this.urls.find((url) => url.id === id) || null;
+  async getUrl(id: string): Promise<Url | null> {
+    try {
+      const response = await this.http.get<{ message: string; data: Url }>(`${this.apiUrl}/${id}`).toPromise();
+      return response?.data || null;
+    } catch (error) {
+      console.error('An error occurred:', error);
+      return null;
+    }
   }
 
   deleteUrl(url: Url): void {

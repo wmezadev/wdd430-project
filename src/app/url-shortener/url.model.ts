@@ -3,7 +3,7 @@ export class Url {
     public id: string,
     public originalUrl: string,
     public shortUrl: string,
-    public clicks: number,
+    public clicksCounter: number,
     public createdAt: string,
     public updatedAt: string,
   ) {}
