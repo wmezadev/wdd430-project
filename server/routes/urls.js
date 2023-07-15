@@ -8,7 +8,7 @@ const { BASE_URL } = require('../../config/index.js');
 /* GET a shortened URL by id */
 router.get('/:id', async (req, res) => {
   try {
-    const url = await Url.findOne({ id: req.params.id });
+    const url = await Url.findOne({ id: req.params.id }).populate('clicks');
     if (url) {
       return res.status(200).json({ message: 'URL fetched successfully', data: url });
     } else {
@@ -50,7 +50,6 @@ router.post('/', async (req, res) => {
         originalUrl,
         shortUrl,
         id,
-        date: new Date(),
       });
       await url.save();
       return res.json({ message: 'URL shortened successfully', data: url });
@@ -69,7 +68,7 @@ router.put('/:id', async (req, res) => {
       {
         $set: {
           originalUrl: req.body.originalUrl,
-          clicks: req.body.clicks,
+          clicksCounter: req.body.clicksCounter,
         },
       },
     );

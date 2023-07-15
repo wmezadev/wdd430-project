@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const Url = require('../models/Url');
+const Click = require('../models/Click');
 
 /* GET home page */
 router.get('/', function (req, res, next) {
@@ -11,10 +12,17 @@ router.get('/', function (req, res, next) {
 /* GET redirects short url to original url */
 router.get('/:id', async (req, res) => {
   try {
-    const url = await Url.findOne({ id: req.params.id });
+    let url = await Url.findOne({ id: req.params.id });
     if (url) {
+      // Save Click user agent data
+      const click = new Click({
+        ...req.useragent,
+        urlId: url._id,
+      });
+      await click.save();
       // Increments counter by one because URL was visited
-      await Url.updateOne({ id: req.params.id }, { $inc: { clicks: 1 } });
+      await Url.findByIdAndUpdate(url._id, { $inc: { clicksCounter: 1 }, $push: { clicks: click._id } }, { new: true });
+      // Redirects to original URL
       return res.redirect(url.originalUrl);
     } else {
       return res.status(404).json({ message: 'No URL Found', data: null });
