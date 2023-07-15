@@ -1,6 +1,6 @@
 {
   "name": "wdd430-project-url-shortener",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +8,13 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "format": "prettier --config ./.prettierrc --write \"**/**/**/*{.ts,.js,.json,.css,.scss,.html}\""
+    "format:fix": "prettier --config ./.prettierrc --write \"**/**/**/*{.ts,.js,.json,.css,.scss,.html}\"",
+    "format:verify": "prettier --config ./.prettierrc --list-different \"**/**/**/*{.ts,.js,.json,.css,.scss,.html}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format:fix"
+    }
   },
   "private": true,
   "dependencies": {
@@ -39,6 +45,7 @@
     "@angular/cli": "~15.2.6",
     "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
+    "husky": "^8.0.3",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
