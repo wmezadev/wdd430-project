@@ -22,23 +22,16 @@ This is a URL Shortener app that saves URLs in a database collection and generat
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
 
-### Frontend Enviroment variables
-
-Before starting, create a file `.env` at the root an add your own API url like this (You can use .env.example):
-
-```bash
-NG_APP_API_URL=http://localhost:3000
-```
-
 ## Backend
 
 This project was build using [Expressjs](https://expressjs.com/) version 4.18.1.
 
-### Backend Enviroment variables
+## Enviroment variables
 
-Before starting, create a file `config/.env` at the config folder an add your own settings for your database like this (You can use `config/.env.example`):
+Before starting, create a file `.env` at the root an add your own API url like this (You can use .env.example as reference):
 
 ```bash
+NG_APP_API_URL=http://localhost:3000
 PORT=3000
 BASE_URL=http://localhost
 MONGO_URI=mongodb://localhost/url-shortener
@@ -48,25 +41,10 @@ MONGO_URI=mongodb://localhost/url-shortener
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
+## Build and Deployment
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Unfortunately for now it is necesary to **set the variable NG_APP_API_URL** with the value that you want to include for production, and **build the app before push to the repo**, for example `NG_APP_API_URL=https://wmezadev-url-shortener-9d83.onrender.com` to be able to deploy to [render.com](https://render.com/).
 
 ## Author
 
