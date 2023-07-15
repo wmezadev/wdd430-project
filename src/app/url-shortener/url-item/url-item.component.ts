@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UrlShortenerService } from '../url-shortener.service';
 import { Url } from '../Url.model';
 import { Subscription } from 'rxjs';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-url-item',
   templateUrl: './url-item.component.html',
@@ -11,6 +13,8 @@ import { Subscription } from 'rxjs';
 export class UrlItemComponent implements OnInit {
   url!: Url;
   subscription: Subscription = new Subscription();
+  faTrash = faTrash;
+  faRotateLeft = faRotateLeft;
 
   constructor(
     private urlService: UrlShortenerService,

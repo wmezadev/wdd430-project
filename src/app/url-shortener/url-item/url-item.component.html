@@ -26,8 +26,13 @@
   <div class="row">
     <div class="col-12">
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-warning" (click)="onResetClicks()">Reset Clicks</button>
-        <button type="button" class="btn btn-danger" (click)="onDeleteUrl()">Delete URL</button>
+        <button type="button" class="btn btn-warning" (click)="onResetClicks()">
+          <fa-icon [icon]="faRotateLeft"></fa-icon>
+          Reset Clicks
+        </button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteUrl()">
+          <fa-icon [icon]="faTrash"></fa-icon> Delete URL
+        </button>
       </div>
     </div>
   </div>

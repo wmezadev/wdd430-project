@@ -7,11 +7,3 @@
 .alert-success a {
   color: var(--color-secondary);
 }
-
-.btn-outline-accent {
-  --bs-btn-color: var(--color-snow-white);
-  --bs-btn-border-color: var(--color-primary);
-  --bs-btn-hover-color: var(--color-snow-white);
-  --bs-btn-active-color: var(--color-snow-white);
-  background-color: var(--color-primary);
-}
