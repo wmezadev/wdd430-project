@@ -11176,10 +11176,10 @@ fieldset:disabled .btn {
   --color-warning: var(--color-old-gold);
   --color-danger: var(--color-engineering-orange);
 }
-*,
 html,
 body {
   font-family: Poppins, sans-serif;
+  height: 100%;
 }
 body {
   background-color: var(--color-snow-white);
