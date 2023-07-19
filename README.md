@@ -1,6 +1,12 @@
+<p align="center">
+    <img src="./docs/images/url-shortener-logo.png" alt="url-shortener-logo" width="240px" height="auto">
+</p>
+
 # WDD 430 Course Project - URL Shortener
 
-This is a personal project work for the BYU-Idaho Web Full-Stack Development (WDD 430).
+This is a personal project work for the BYU-Idaho Web Full-Stack Development (WDD 430) using the MEAN stack.
+
+![URL Shortener Preview](./docs/images/app-preview.png)
 
 ## Criteria
 
@@ -18,13 +24,13 @@ The application needs to include the following:
 
 This is a URL Shortener app that saves URLs in a database collection and generate new URLs in a shorter version and redirects to the originals URLs.
 
+## Backend
+
+This project was build using [Expressjs](https://expressjs.com/) version 4.18.1 and [MonogoDB](https://www.mongodb.com/try/download/community).
+
 ## Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
-
-## Backend
-
-This project was build using [Expressjs](https://expressjs.com/) version 4.18.1.
 
 ## Enviroment variables
 
